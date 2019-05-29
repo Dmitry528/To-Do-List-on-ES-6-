@@ -1,2 +1,2 @@
-
+var btn_data=document.querySelector(".btn_data");function getTask(){appearNewTask(document.querySelector(".formTask").value)}function appearNewTask(e){var t=document.querySelector("#masonry_root"),n=document.createElement("div");n.setAttribute("class","element_msnry"),n.innerHTML="<p>"+e+"</p>",t.append(n);new Masonry(t,{itemSelector:".element_msnry",columnWidth:50})}btn_data.addEventListener("click",getTask);
 //# sourceMappingURL=main.js.map

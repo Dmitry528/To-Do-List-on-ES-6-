@@ -1,3 +1,34 @@
 main{
-
+    .element_msnry{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 170px;
+        width: 230px;
+        background-color: $blue;
+        border-radius: 20%;
+        @include text($black, 16px, $myFont);
+        margin-bottom: 20px;
+    }
+    .btn_task{
+        @include text($black, 16px, $myFont);
+        background-color:#44c767;
+        -moz-border-radius:28px;
+        -webkit-border-radius:28px;
+        border-radius:28px;
+        border:1px solid #18ab29;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font-family:Arial;
+        font-size:17px;
+        padding:10px 15px;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #2f6627;
+        outline: none;
+        &:hover{
+            background-color:#5cbf2a;
+        }
+    }
 }
