@@ -34,10 +34,29 @@
 
 <body>
     <header>
-        <!-- Input and button for adding new Task -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    <div class="titleWrapper">
+                        <h1>To Do List</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-6 d-flex justify-content-end">
+                    <input type="text" class="form formTask" placeholder="Description of your task">
+                </div>
+                <div class="col-5">
+                  <div class="btnWrapp d-flex align-items-center">
+                        <button class="btn btn_data">Add task</button>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <hr>
     </header>
     <main>
-        <!-- Output task in masonry containers -->
+        
     </main>
     <script src="js/masonry.js"></script>
     <script src="js/main.js"></script>

@@ -1,9 +1,10 @@
 @import "fonts";
 @import "style";
 @import "media";
-
+@import "../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
 
 @import "variables";
+@import "mixins";
 
 @import "header";
 @import "content";
