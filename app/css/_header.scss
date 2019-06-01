@@ -39,4 +39,10 @@ header{
             box-shadow:0px 0px 2px #bababa, inset 0px 0px 1px #ffffff;  
         }
     }
+    .errorWrapper{
+        height: 70px;
+        .error{
+            @include text($red, 18px, $myFont);
+        }
+    }
 }

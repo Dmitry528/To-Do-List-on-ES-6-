@@ -1,27 +1,79 @@
-/* Masonry elem */
-
+/* Global */
 var btn_data = document.querySelector(".btn_data");
+var error = document.querySelector(".error");
+var elem = document.querySelector('.masonry_root');
 
-btn_data.addEventListener("click", getTask);
+/* Start logic */
+btn_data.addEventListener("click", getData);
 
-function getTask(){
-    var taskString = document.querySelector(".formTask").value;
-    appearNewTask(taskString);
+function getData(){
+    var str = document.querySelector(".formTask").value;
+    createTask(str);
 }
 
-function appearNewTask(taskString){
-    var rootMasonry = document.querySelector('#masonry_root');
+function createTask(str){
+    if(str === ""){
+        error.setAttribute("class", "d-block");
+        error.setAttribute("class", "error");
+    }
+    else{
+        error.setAttribute("class", "d-none");
 
-    var root_child = document.createElement("div");
-    root_child.setAttribute("class", "element_msnry");
-    root_child.innerHTML = "<p>" + taskString + "</p>";
-    rootMasonry.append(root_child);
-    
-    var msnry = new Masonry(rootMasonry, {
-        itemSelector: '.element_msnry',
-        columnWidth: 50,
-    });
+        var element_msnry = document.createElement("div");
+        element_msnry.setAttribute("class", "element_msnry");
+        elem.appendChild(element_msnry);
+
+        var innerElem = document.createElement("div");
+        innerElem.setAttribute("class", "inner_elem");
+
+        var none_btn = document.createElement("i");
+        none_btn.setAttribute("class", "fas fa-times");
+
+        var p = document.createElement("p");
+        var input = document.createElement("input");
+        input.setAttribute("type", "checkbox");
+        p.appendChild(input);
+        p.innerHTML += str;
+
+        innerElem.appendChild(none_btn);
+        innerElem.appendChild(p);
+
+        var buttonColor = document.createElement("button");
+        buttonColor.setAttribute("class", "btn_task");
+        buttonColor.innerHTML = "Change color";
+
+        element_msnry.appendChild(innerElem);
+        element_msnry.appendChild(buttonColor);
+
+        var msnry = new Masonry( elem, {
+            itemSelector: '.element_msnry',
+            columnWidth: 30
+        });
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* button logic - color, different classes for tasks, how to incude
 input ant others html in js, local storage on reload page content still
 on page and others  */

@@ -4,12 +4,29 @@ main{
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
-        height: 170px;
-        width: 230px;
+        height: 200px;
+        width: 250px;
         background-color: $blue;
         border-radius: 20%;
         @include text($black, 16px, $myFont);
         margin-bottom: 20px;
+        box-shadow: 3px 3px 5px 6px #ccc;
+        .inner_elem{
+            display: flex;
+            flex-direction: column;
+            min-width: 150px;
+            text-align: center;
+            i{
+                align-self: flex-end;
+                cursor: pointer;
+                font-size: 25px;
+                color: $red;
+            }
+        }
+    }
+    .elem-2{
+        height: 400px;
+        width: 500px;
     }
     .btn_task{
         @include text($black, 16px, $myFont);
@@ -27,8 +44,15 @@ main{
         text-decoration:none;
         text-shadow:0px 1px 0px #2f6627;
         outline: none;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
         &:hover{
             background-color:#5cbf2a;
         }
+    }
+    .d-block{
+        display: block;
+    }
+    .d-none{
+        display: hidden;
     }
 }
