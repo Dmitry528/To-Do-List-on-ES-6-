@@ -2,6 +2,10 @@
 var btn_data = document.querySelector(".btn_data");
 var error = document.querySelector(".error");
 var elem = document.querySelector('.masonry_root');
+var msnry = new Masonry( elem, {
+    itemSelector: '.element_msnry',
+    columnWidth: 30
+});
 
 /* Start logic */
 btn_data.addEventListener("click", getData);
@@ -45,11 +49,39 @@ function createTask(str){
         element_msnry.appendChild(innerElem);
         element_msnry.appendChild(buttonColor);
 
-        var msnry = new Masonry( elem, {
-            itemSelector: '.element_msnry',
-            columnWidth: 30
-        });
+        deleteBlock(none_btn, element_msnry);
     }
+    doneTask(input);
+    changeColor(buttonColor, element_msnry);
+}
+
+function deleteBlock(btn_i, parent_elem){
+    btn_i.addEventListener("click", function(){
+        parent_elem.remove();
+    });
+}
+
+msnry.on( 'removeComplete', function( removedItems ) {
+    console.log( 'Masonry remove complete with ' + removedItems.length + ' items' );
+});
+
+function doneTask(input){
+    // input onclick text line
+}
+
+function changeColor(button, parent_elem){
+    parent_elem.style.background = "#D0E4F5";
+    button.addEventListener("click", function(){
+        if( parent_elem.style.background == "rgb(208, 228, 245)"){
+            parent_elem.style.background = "#7f0055";
+        }
+        else if(parent_elem.style.background == "rgb(127, 0, 85)"){
+            parent_elem.style.background = "green";
+        }
+        else if(parent_elem.style.background == "green"){
+            parent_elem.style.background = "#D0E4F5";
+        }
+    });
 }
 
 
@@ -74,6 +106,4 @@ function createTask(str){
 
 
 
-/* button logic - color, different classes for tasks, how to incude
-input ant others html in js, local storage on reload page content still
-on page and others  */
+/* text line-throw and with reload save data  */
