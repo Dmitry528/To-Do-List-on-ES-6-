@@ -17,6 +17,7 @@ main{
         justify-content: space-around;
         flex-direction: column;
 
+        margin-top: 50px;
 
         .content, .btn_change{
             @include text($black, 18px, $myFont);
