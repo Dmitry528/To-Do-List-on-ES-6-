@@ -21,6 +21,7 @@ main{
 
         .content, .btn_change{
             @include text($black, 18px, $myFont);
+            cursor: pointer;
             width: 100%;
             text-align: center;
             display: flex;
