@@ -4,6 +4,7 @@ window.addEventListener("load", function(){
     checkLength();
 });
 
+
 function getData(btn_data){
     btn_data.addEventListener("click", function(){
         var str = document.querySelector(".formTask").value;
@@ -26,6 +27,7 @@ function checkStr(str, error){
 
         var root_child = document.createElement("div");
         root_child.className = "element_msnry";
+        root_child.style.backgroundColor = "#d0e4f5";
         /* Dissapear */
         var dissapear = document.createElement("div");
         dissapear.className = "dissapear";
@@ -37,10 +39,9 @@ function checkStr(str, error){
         /* Content */
         var content = document.createElement("div");
         content.className = "content";
-        var checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        content.appendChild(checkbox);
-        content.innerHTML += str;
+        var p = document.createElement("p");
+        p.innerHTML = str;
+        content.appendChild(p);
         /* Content */
         /* Btn */
         var btn = document.createElement("div");
@@ -53,7 +54,7 @@ function checkStr(str, error){
         root_child.appendChild(dissapear);
         root_child.appendChild(content);
         root_child.appendChild(btn);
-        elem.appendChild(root_child);
+        elem.appendChild(root_child);      
         /* Create Blocks */
 
 
@@ -63,13 +64,18 @@ function checkStr(str, error){
         })
         var msnry = new Masonry(elem, {
             itemSelector: '.element_msnry',
-            columnWidth: 150
+            columnWidth: 140
         });
         msnry.on('removeComplete', function (removedItems) {
             console.log('Masonry remove complete with ' + removedItems.length + ' items');
+            event.stopPropagation();
         })
         /* Masonry */
         taskNone(none_btn, root_child);
+        changeColor(buttonChange, root_child);
+        lineThrow(p);
+
+        localReload(str);
     }
 }
 
@@ -88,6 +94,41 @@ function taskNone(btnNone, parent){
     })
 }
 
-/* Change color */
-/* checkBox line throw */
-/* Save data after reload */
+function changeColor(button, parent){
+    button.addEventListener("click", function(){
+        if(parent.style.backgroundColor === "rgb(208, 228, 245)"){
+            parent.style.backgroundColor = "rgb(159, 0, 212)";
+        }
+        else if(parent.style.backgroundColor === "rgb(159, 0, 212)"){
+            parent.style.backgroundColor = "rgb(212, 159, 0)";
+        }
+        else if(parent.style.backgroundColor === "rgb(212, 159, 0)"){
+            parent.style.backgroundColor = "rgb(208, 228, 245)";
+        }
+    })
+}
+function lineThrow(p){
+    p.addEventListener("click", function(){
+        if(p.style.textDecoration === "none"){
+            p.style.textDecoration = "line-through";
+        } else{
+            p.style.textDecoration = "none";
+        }
+    })
+}
+
+
+var arrOfStr = [];
+var counter = 0;
+
+function localReload(str){
+    arrOfStr.push(str);
+    
+    for(var k = 0; k < 1; k++){
+        localStorage.setItem("Task" + counter, arrOfStr[arrOfStr.length - 1]);
+        counter++;
+    }
+}
+
+/* Save data after reload  SAVE IN LOCAL */
+/* Get in local and render !!! */
